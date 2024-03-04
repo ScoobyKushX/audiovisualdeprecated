@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68191f54-fa08-4056-9021-6931b760c4c5" name="Changes" comment="">
+    <list default="true" id="68191f54-fa08-4056-9021-6931b760c4c5" name="Changes" comment="Version 2 traits en haut à droite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainwindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/shaders.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vispywidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/vispywidget.py" afterDir="false" />
     </list>
@@ -25,6 +24,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -99,13 +99,26 @@
       <workItem from="1709544600930" duration="338000" />
       <workItem from="1709544953324" duration="455000" />
       <workItem from="1709545427775" duration="1400000" />
+      <workItem from="1709549394358" duration="83000" />
+      <workItem from="1709549486890" duration="2124000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AudioVisualTrue$main.coverage" NAME="main Coverage Results" MODIFIED="1709547805994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AudioVisualTrue$main.coverage" NAME="main Coverage Results" MODIFIED="1709552019378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

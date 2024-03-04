@@ -1,43 +1,43 @@
-# vispywidget.py
-
-from vispy import app, gloo
 import numpy as np
+from PySide6.QtWidgets import *
+from PySide6.QtGui import *
+from PySide6.QtCore import *
+from vispy import gloo, app
+
+import shaders
 from shaders import vertex_shader, fragment_shader
-from PySide6 import QtOpenGLWidgets, QtWidgets, QtCore, QtGui
+
 
 class VispyWidget(app.Canvas):
-    def __init__(self):
-        self.opengl = QtOpenGLWidgets.QOpenGLWidget()
-        app.Canvas.__init__(self, keys='interactive', size=(800, 500))
+    def __init__(self, parent=None):
+        app.Canvas.__init__(self, parent=parent, keys='interactive')
         self.program = gloo.Program(vertex_shader, fragment_shader)
         self.init_bars()
-        gloo.set_viewport(0, 0, *self.physical_size)
+        self.show()
 
     def init_bars(self):
-        # Initialize the coordinates for 10 bars, each represented by 2 points (top and bottom)
-        self.bars = np.zeros((20, 2), dtype=np.float32)  # 10 bars x 2 points per bar
+        # Initialize bars
+        bar_width = self.size[0] / 10
+        self.bars = np.zeros((10, 2, 3), dtype=np.float32)
         for i in range(10):
-            x = i * 0.1  # Adjust the x spacing
-            self.bars[i * 2] = [x, 0]  # Bottom point
-            self.bars[i * 2 + 1] = [x, 1]  # Top point (initial height set to 0.5)
-        self.program['a_position'] = self.position
-        self.program['u_color'] = (1, 1, 1, 1)  # Set color to white
+            self.bars[i, :, 0] = i * bar_width, (i + 1) * bar_width
+            self.height = self.bars[i, :, 1] = 0, 0.5  # Initial height
+            self.bars[i, :, 2] = 0, 0  # z-axis
+        self.program['a_position'] = self.bars.reshape(-1, 3)  # Flatten and assign to a_position
 
     def on_draw(self, event):
         gloo.clear('black')
-        # Draw the bars as lines
-        for i in range(0, len(self.bars), 2):
-            self.program['a_position'] = self.bars[i:i+2]
-            self.program.draw('lines')
+        self.program.draw('lines')
 
     def update_bars(self, heights):
-        # Update the heights of the bars
+        # Update bars based on audio data (simulated here)
         for i, height in enumerate(heights):
-            self.bars[i * 2 + 1][1] = height  # Update the y-coordinate of the top point
-        self.program['a_position'] = self.bars
+            self.bars[i, :, 1] = 0, height
+        self.program['a_position'] = self.bars.flatten()
         self.update()
 
 if __name__ == '__main__':
-    c = VispyWidget()
-    c.show()
-    app.run()
+    app = QApplication([])
+    widget = VispyWidget()
+    widget.show()
+    app.exec_()

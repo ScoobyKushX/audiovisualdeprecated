@@ -21,13 +21,13 @@ class VispyWidget(app.Canvas):
         self.bars = np.zeros((10, 2, 3), dtype=np.float32)
         for i in range(10):
             self.bars[i, :, 0] = i * bar_width, (i + 1) * bar_width
-            self.height = self.bars[i, :, 1] = 0, 0.5  # Initial height
+            self.bars[i, :, 1] = 0, 0.5  # Initial height
             self.bars[i, :, 2] = 0, 0  # z-axis
-        self.program['a_position'] = self.bars.reshape(-1, 3)  # Flatten and assign to a_position
+            self.program['a_position'] = self.bars.reshape(-1, 3)  # Flatten array
 
     def on_draw(self, event):
-        gloo.clear('black')
-        self.program.draw('lines')
+        gloo.clear('red')
+        self.program.draw('line_strip')
 
     def update_bars(self, heights):
         # Update bars based on audio data (simulated here)
